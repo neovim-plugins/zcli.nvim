@@ -90,7 +90,6 @@ M = {
             vim.cmd.normal( "zz" )
 
             -- update folds
-            vim.b[ bufnr ].folds_update_pending = false
             vim.schedule( function ()
                 utils.update_folds( bufnr )
             end )

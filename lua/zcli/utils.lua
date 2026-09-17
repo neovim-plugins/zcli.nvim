@@ -109,9 +109,12 @@ M = {
 
     update_folds = function ( bufnr )
         if M.has_treesitter( bufnr ) then
-            M.parse_treesitter( bufnr, function ()
-                vim.cmd.normal( "zv" )
-            end )
+            -- vim.opt_local.foldmethod = "expr"
+            -- vim.cmd.normal( "zx" )
+            vim.cmd.normal( "zv" )
+            -- M.parse_treesitter( bufnr, function ()
+            --     vim.cmd.normal( "zv" )
+            -- end )
         else
             vim.cmd.normal( "zv" )
         end
