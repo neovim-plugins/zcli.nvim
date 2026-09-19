@@ -1,5 +1,13 @@
 # Changelog
 
+### v1.3.2 (2026-09-19)
+
+**Bug fixes:**
+
+- \[PATCH] fix: fix folds updater (● [5ef8933](https://github.com/neovim-plugins/zcli.nvim/commit/5ef8933); 👬 zdm)
+
+Compare with the previous release: [v1.3.1...v1.3.2](https://github.com/neovim-plugins/zcli.nvim/compare/v1.3.1...v1.3.2)
+
 ### v1.3.1 (2026-09-19)
 
 **Bug fixes:**
