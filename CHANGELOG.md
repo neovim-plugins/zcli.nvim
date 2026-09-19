@@ -1,5 +1,17 @@
 # Changelog
 
+### v1.3.1 (2026-09-19)
+
+**Bug fixes:**
+
+- \[PATCH] fix: adjust fold refresh behavior (● [40e9d09](https://github.com/neovim-plugins/zcli.nvim/commit/40e9d09); 👬 zdm)
+
+    Remove the stale fold update flag and simplify treesitter-based fold refresh to use the direct `zv` command.
+
+- \[PATCH] fix: disable folds update (● [a224e27](https://github.com/neovim-plugins/zcli.nvim/commit/a224e27); 👬 zdm)
+
+Compare with the previous release: [v1.3.0...v1.3.1](https://github.com/neovim-plugins/zcli.nvim/compare/v1.3.0...v1.3.1)
+
 ### v1.3.0 (2026-08-18)
 
 **New features:**
