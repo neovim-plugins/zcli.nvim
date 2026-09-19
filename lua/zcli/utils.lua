@@ -8,6 +8,28 @@ local error_level_hl = {
     error = "ErrorMsg",
     warning = "WarningMsg",
 }
+
+function has_treesitter ( bufnr )
+    local highlighter = require( "vim.treesitter.highlighter" )
+
+    if highlighter.active[ bufnr ] then
+        return true
+    else
+        return false
+    end
+end
+
+function parse_treesitter ( bufnr )
+    if not has_treesitter( bufnr ) then return end
+
+    local parser = vim.treesitter.get_parser( bufnr )
+
+    if not parser then return end
+
+    -- DOCS: https://neovim.io/doc/user/treesitter.html#LanguageTree%3Aparse()
+    parser:parse( true )
+end
+
 local M
 
 M = {
@@ -84,40 +106,18 @@ M = {
         end
     end,
 
-    has_treesitter = function ( bufnr )
+    update_folds = function ( bufnr )
         if not bufnr then
             bufnr = vim.api.nvim_get_current_buf()
         end
 
-        local highlighter = require( "vim.treesitter.highlighter" )
+        parse_treesitter( bufnr )
 
-        if highlighter.active[ bufnr ] then
-            return true
-        else
-            return false
-        end
-    end,
-
-    parse_treesitter = function ( bufnr, callback )
-        local parser = vim.treesitter.get_parser( bufnr )
-
-        if not parser then return end
-
-        -- DOCS: https://neovim.io/doc/user/treesitter.html#LanguageTree%3Aparse()
-        parser:parse( true, callback )
-    end,
-
-    update_folds = function ( bufnr )
-        if M.has_treesitter( bufnr ) then
-            -- vim.opt_local.foldmethod = "expr"
-            -- vim.cmd.normal( "zx" )
-            vim.cmd.normal( "zv" )
-            -- M.parse_treesitter( bufnr, function ()
-            --     vim.cmd.normal( "zv" )
-            -- end )
-        else
-            vim.cmd.normal( "zv" )
-        end
+        vim.schedule( function ()
+            vim.api.nvim_buf_call( bufnr, function ()
+                vim.cmd.normal( "zx" )
+            end )
+        end )
     end,
 }
 

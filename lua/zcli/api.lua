@@ -90,9 +90,7 @@ M = {
             vim.cmd.normal( "zz" )
 
             -- update folds
-            -- vim.schedule( function ()
-            --     utils.update_folds( bufnr )
-            -- end )
+            utils.update_folds( bufnr )
         end
 
         -- update diagnostics
