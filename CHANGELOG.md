@@ -1,5 +1,17 @@
 # Changelog
 
+### v1.3.3 (2026-09-21)
+
+**Code refactoring:**
+
+- \[PATCH] refactor: localize helper functions and module state (● [65d4ac3](https://github.com/neovim-plugins/zcli.nvim/commit/65d4ac3); 👬 zdm)
+
+    Convert helper functions in `lua/zcli/utils.lua` from global to local definitions
+    and move the `M` table assignment in `lua/zcli/commands.lua` to a later point
+    so the module exports remain scoped without changing behavior.
+
+Compare with the previous release: [v1.3.2...v1.3.3](https://github.com/neovim-plugins/zcli.nvim/compare/v1.3.2...v1.3.3)
+
 ### v1.3.2 (2026-09-19)
 
 **Bug fixes:**
