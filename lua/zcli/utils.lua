@@ -9,7 +9,7 @@ local error_level_hl = {
     warning = "WarningMsg",
 }
 
-function has_treesitter ( bufnr )
+local function has_treesitter ( bufnr )
     local highlighter = require( "vim.treesitter.highlighter" )
 
     if highlighter.active[ bufnr ] then
@@ -19,7 +19,7 @@ function has_treesitter ( bufnr )
     end
 end
 
-function parse_treesitter ( bufnr )
+local function parse_treesitter ( bufnr )
     if not has_treesitter( bufnr ) then return end
 
     local parser = vim.treesitter.get_parser( bufnr )

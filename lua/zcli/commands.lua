@@ -1,6 +1,5 @@
 local api = require( "zcli/api" )
 local utils = require( "zcli/utils" )
-local M
 
 local function execute ( input )
 
@@ -23,6 +22,8 @@ end
 
 local function complete ( ... )
 end
+
+local M
 
 M = {
     setup = function ()
