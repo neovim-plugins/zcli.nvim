@@ -27,9 +27,7 @@ local function spawn_server ()
         return
     end
 
-    local cmd = vim.fn.has( "win32" ) == 1 and "zcli.cmd" or "zcli"
-
-    server = vim.fn.jobstart( cmd .. " rpc start", {
+    server = vim.fn.jobstart( "zcli rpc start", {
         detach = false,
         on_exit = function ()
             server = nil
