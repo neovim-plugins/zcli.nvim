@@ -23,7 +23,6 @@ local function test_rpc ()
 end
 
 local function spawn_server ()
-    -- не запускаем второй раз, если процесс уже стартовал
     if server and server > 0 then
         return
     end
@@ -80,7 +79,7 @@ M = {
             local ready = vim.wait( START_TIMEOUT, test_rpc, START_INTERVAL )
 
             if not ready then
-                utils.echoe( "LSP RPC server did not start in time" )
+                utils.echoe( "zcli RPC server did not start in time" )
 
                 return nil
             end
