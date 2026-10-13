@@ -1,5 +1,23 @@
 # Changelog
 
+### v1.4.0 (2026-10-13)
+
+**New features:**
+
+- \[MINOR] feat: wait for RPC server startup before connecting (● [8be3d0f](https://github.com/neovim-plugins/zcli.nvim/commit/8be3d0f); 👬 zdm)
+
+    Start the server only once, wait for it to become ready, and handle connection failures gracefully.
+
+**Bug fixes:**
+
+- \[PATCH] fix: use zcli executable to start the RPC server (● [1ab6150](https://github.com/neovim-plugins/zcli.nvim/commit/1ab6150); 👬 zdm)
+
+**Other changes:**
+
+- chore: clarify RPC startup messaging (● [5dbd671](https://github.com/neovim-plugins/zcli.nvim/commit/5dbd671); 👬 zdm)
+
+Compare with the previous release: [v1.3.4...v1.4.0](https://github.com/neovim-plugins/zcli.nvim/compare/v1.3.4...v1.4.0)
+
 ### v1.3.4 (2026-10-13)
 
 **Bug fixes:**
