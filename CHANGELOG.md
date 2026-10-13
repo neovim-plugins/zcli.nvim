@@ -1,5 +1,13 @@
 # Changelog
 
+### v1.5.0 (2026-10-13)
+
+**New features:**
+
+- \[MINOR] feat: add subcommand completion (● [946b4cb](https://github.com/neovim-plugins/zcli.nvim/commit/946b4cb); 👬 zdm)
+
+Compare with the previous release: [v1.4.0...v1.5.0](https://github.com/neovim-plugins/zcli.nvim/compare/v1.4.0...v1.5.0)
+
 ### v1.4.0 (2026-10-13)
 
 **New features:**
