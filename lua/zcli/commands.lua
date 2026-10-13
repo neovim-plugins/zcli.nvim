@@ -20,7 +20,21 @@ local function execute ( input )
     end
 end
 
-local function complete ( ... )
+local subcommands = { "lint", "browser" }
+
+local function complete ( arglead, cmdline, cursorpos )
+    local parts = vim.split( cmdline:sub( 1, cursorpos ), "%s+", { trimempty = true } )
+
+    -- number of the argument being completed (1 = subcommand)
+    local position = arglead == "" and #parts or #parts - 1
+
+    if position == 1 then
+        return vim.tbl_filter( function ( name )
+            return vim.startswith( name, arglead )
+        end, subcommands )
+    end
+
+    return {}
 end
 
 local M
