@@ -1,5 +1,13 @@
 # Changelog
 
+### v1.3.4 (2026-10-13)
+
+**Bug fixes:**
+
+- \[PATCH] fix: start server with rpc command (● [f95bedf](https://github.com/neovim-plugins/zcli.nvim/commit/f95bedf); 👬 zdm)
+
+Compare with the previous release: [v1.3.3...v1.3.4](https://github.com/neovim-plugins/zcli.nvim/compare/v1.3.3...v1.3.4)
+
 ### v1.3.3 (2026-09-21)
 
 **Code refactoring:**
