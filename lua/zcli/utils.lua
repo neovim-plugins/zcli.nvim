@@ -20,6 +20,8 @@ local function has_treesitter ( bufnr )
 end
 
 local function parse_treesitter ( bufnr )
+    if not vim.api.nvim_buf_is_valid( bufnr ) or not vim.api.nvim_buf_is_loaded( bufnr ) then return end
+
     if not has_treesitter( bufnr ) then return end
 
     local parser = vim.treesitter.get_parser( bufnr )
@@ -27,7 +29,14 @@ local function parse_treesitter ( bufnr )
     if not parser then return end
 
     -- DOCS: https://neovim.io/doc/user/treesitter.html#LanguageTree%3Aparse()
-    parser:parse( true )
+    -- Во время перезагрузки буфера дерево может быть устаревшим относительно текста
+    -- (инъекции читают текст по старым диапазонам -> "Index out of bounds").
+    -- В этом случае сбрасываем дерево, оно будет перестроено при следующей отрисовке.
+    local parsed = pcall( parser.parse, parser, true )
+
+    if not parsed then
+        pcall( parser.invalidate, parser, true )
+    end
 end
 
 local M
@@ -111,9 +120,12 @@ M = {
             bufnr = vim.api.nvim_get_current_buf()
         end
 
-        parse_treesitter( bufnr )
-
+        -- парсим уже после того, как буфер полностью перезагрузился (не внутри FileType autocmd)
         vim.schedule( function ()
+            if not vim.api.nvim_buf_is_valid( bufnr ) or not vim.api.nvim_buf_is_loaded( bufnr ) then return end
+
+            parse_treesitter( bufnr )
+
             vim.api.nvim_buf_call( bufnr, function ()
                 vim.cmd.normal( "zx" )
             end )
