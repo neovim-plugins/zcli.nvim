@@ -20,8 +20,6 @@ local function has_treesitter ( bufnr )
 end
 
 local function parse_treesitter ( bufnr )
-    if not vim.api.nvim_buf_is_valid( bufnr ) or not vim.api.nvim_buf_is_loaded( bufnr ) then return end
-
     if not has_treesitter( bufnr ) then return end
 
     local parser = vim.treesitter.get_parser( bufnr )
@@ -29,14 +27,7 @@ local function parse_treesitter ( bufnr )
     if not parser then return end
 
     -- DOCS: https://neovim.io/doc/user/treesitter.html#LanguageTree%3Aparse()
-    -- While a buffer is being reloaded, the tree can be stale relative to the text
-    -- (injections read text using old ranges -> "Index out of bounds").
-    -- In that case we invalidate the tree, and it gets rebuilt on the next redraw.
-    local parsed = pcall( parser.parse, parser, true )
-
-    if not parsed then
-        pcall( parser.invalidate, parser, true )
-    end
+    parser:parse( true )
 end
 
 local M
@@ -120,12 +111,10 @@ M = {
             bufnr = vim.api.nvim_get_current_buf()
         end
 
-        -- parse only after the buffer has fully reloaded (not inside the FileType autocmd)
+        -- parse synchronously to make `zx` command work
+        parse_treesitter( bufnr )
+
         vim.schedule( function ()
-            if not vim.api.nvim_buf_is_valid( bufnr ) or not vim.api.nvim_buf_is_loaded( bufnr ) then return end
-
-            parse_treesitter( bufnr )
-
             vim.api.nvim_buf_call( bufnr, function ()
                 vim.cmd.normal( "zx" )
             end )
