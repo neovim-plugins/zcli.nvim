@@ -1,5 +1,19 @@
 # Changelog
 
+### v1.5.1 (2026-10-18)
+
+**Bug fixes:**
+
+- \[PATCH] fix: guard Tree-sitter parsing during buffer reloads (● [9287919](https://github.com/neovim-plugins/zcli.nvim/commit/9287919); 👬 zdm)
+
+- \[PATCH] fix: parse treesitter synchronously before zx (● [b2101d6](https://github.com/neovim-plugins/zcli.nvim/commit/b2101d6); 👬 zdm)
+
+**Other changes:**
+
+- docs: translate utility comments to English (● [49af105](https://github.com/neovim-plugins/zcli.nvim/commit/49af105); 👬 zdm)
+
+Compare with the previous release: [v1.5.0...v1.5.1](https://github.com/neovim-plugins/zcli.nvim/compare/v1.5.0...v1.5.1)
+
 ### v1.5.0 (2026-10-13)
 
 **New features:**
