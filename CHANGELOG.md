@@ -1,5 +1,13 @@
 # Changelog
 
+### v1.5.2 (2026-10-19)
+
+**Bug fixes:**
+
+- \[PATCH] fix: center cursor after updating folds (● [481f9e5](https://github.com/neovim-plugins/zcli.nvim/commit/481f9e5); 👬 zdm)
+
+Compare with the previous release: [v1.5.1...v1.5.2](https://github.com/neovim-plugins/zcli.nvim/compare/v1.5.1...v1.5.2)
+
 ### v1.5.1 (2026-10-18)
 
 **Bug fixes:**
