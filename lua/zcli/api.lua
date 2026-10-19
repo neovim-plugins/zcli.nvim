@@ -86,9 +86,6 @@ M = {
             -- restore cursor position
             vim.fn.setpos( ".", cursor_pos )
 
-            -- center cursor line on the screen
-            vim.cmd.normal( "zz" )
-
             -- update folds
             utils.update_folds( bufnr )
         end

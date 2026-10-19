@@ -117,6 +117,8 @@ M = {
         vim.schedule( function ()
             vim.api.nvim_buf_call( bufnr, function ()
                 vim.cmd.normal( "zx" )
+
+                vim.cmd.normal( "zz" )
             end )
         end )
     end,
